@@ -14,6 +14,7 @@ dataframe = pd.read_excel("Ext Figure5.xlsx",sheet_name='c')
 
 palette = ['lightseagreen','orangered', 'dodgerblue','gold']
 
+dataframe['PA_loc'] = dataframe['PA_loc'].replace({0:np.nan})
 #%%
 sns.set_style("ticks")
 sns.set_context("talk")
@@ -29,8 +30,8 @@ ax.set_xlabel('')
 ax.set_ylabel('Filament Length Sum (μm)')
 # ax.set_xticks([])
 sns.despine()
-plt.ylim(275,1500)
-
+# plt.ylim(275,1500)
+# 
 ax = plt.subplot(2,3,2)
 ax= sns.boxplot(y='AP_span',data=dataframe,x='Segment K-means PCA',palette=palette)
 ax= sns.stripplot(y='AP_span',data=dataframe,x='Segment K-means PCA',color='.3')
@@ -39,7 +40,7 @@ ax.set_xlabel('')
 ax.set_ylabel('A-P Span (μm)')
 # ax.set_xticks([])
 sns.despine()
-plt.ylim(15,80)
+# plt.ylim(15,80)
 
 ax = plt.subplot(2,3,3)
 ax= sns.boxplot(y='Distance_Skin_new',data=dataframe,x='Segment K-means PCA',palette=palette)
@@ -49,7 +50,7 @@ ax.set_xlabel('')
 ax.set_ylabel('Distance from Skin (μm)')
 # ax.set_xticks([])
 sns.despine()
-plt.ylim(0,23)
+# plt.ylim(0,23)
 
 ax = plt.subplot(2,3,4)
 ax= sns.boxplot(y='New_arbour_thickness',data=dataframe,x='Segment K-means PCA',palette=palette)
@@ -57,7 +58,7 @@ ax= sns.stripplot(y='New_arbour_thickness',data=dataframe,x='Segment K-means PCA
 
 ax.set_xlabel('')
 ax.set_ylabel('Distal Arbour Thickness (μm)')
-plt.ylim(4,20)
+plt.ylim(4,22)
 sns.despine()
 # ax.legend(title = 'Trend Cluster',loc='center left', bbox_to_anchor=(0.85,1))
 
@@ -68,14 +69,16 @@ ax= sns.stripplot(y='Darbour_loc',data=dataframe,x='Segment K-means PCA',color='
 sns.despine()
 ax.set_xlabel('')
 ax.set_ylabel('Distal Arbour Location')
-plt.ylim(0.75,0.93)
+# plt.ylim(0.75,0.93)
 ax = plt.subplot(2,3,6)
 ax= sns.boxplot(y='PA_loc',data=dataframe,x='Segment K-means PCA',palette=palette)
 ax= sns.stripplot(y='PA_loc',data=dataframe,x='Segment K-means PCA',color='.3')
 sns.despine()
 ax.set_xlabel('')
 plt.text(0, 0.4, 'Ø',horizontalalignment='center',verticalalignment='center')
-plt.ylim(0.3,0.9)
+# plt.ylim(0.3,0.9)
 ax.set_ylabel('Proximal Arbour Location')
 #%%
 fig.tight_layout()
+#%%
+fig.savefig('fig2c.svg', format='svg',dpi=600)
