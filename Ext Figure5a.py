@@ -21,10 +21,8 @@ print(dt.isna().sum())
 #fill Nan with 0 
 dt['PA_loc'].fillna(0, inplace = True)
 
-X = np.array(dt.drop(['Fish_ID','Condition','Distance_Skin','Darbour_distance','PA_distance',
-                        'PA_distance','Total','Darbour_Thickness_'], 1).astype(float))
-# df = dt.drop(['Fish_ID','Condition','Distance_Skin','Darbour_distance','PA_distance',
-#                         'PA_distance','Total','Darbour_Thickness_'], 1).astype(float)
+X = np.array(dt.drop(['Fish_ID','Condition','Darbour_distance','PA_distance',
+                        'PA_distance','Total'], 1).astype(float))
 
 #%%REDUCE DIMENSIONALITY
 #try to find optimal number of components which capture the greatest amount of variance in the data
